@@ -18,21 +18,14 @@ export const brainEvenGame = () => {
             const num = getRandomArbitrary(1, 100);        
             const isEven = num % 2 === 0;
             const answer =  getAnswer(num); 
-
-            if (isEven) {
-                if (answer === 'yes') {
-                    console.log('Your answer: ' + answer);
-                } else {
-                    return console.log(`'${answer}' is wrong answer ;(. Correct answer was 'yes'.\n Let's try again, ${name}!`);
-                }                            
+            const trueAnswer = (isEven) => isEven ? 'yes' : 'no';           
+            
+            if (answer === trueAnswer(isEven)) {
+                console.log(`Your answer: ${answer}`)                
             } else {
-                if (answer === 'no') {
-                    console.log('Your answer: ' + answer);
-                } else {
-                    return console.log(`'${answer}' is wrong answer ;(. Correct answer was 'no'.\n Let's try again, ${name}!`);   
-                }                         
+                return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueAnswer(isEven)}'.\nLet's try again, ${name}`)
             }            
-        }
+        }    
         console.log(`Correct!\nCongratulations, ${name}!`);          
     };
 
