@@ -6,29 +6,30 @@ export const greeting = () => console.log('Hello, ' + userName() + '!');
 
 export const getAnswer = (num) => readlineSync.question('Question ' + num, { hideEchoBack: true, mask: '' });
 
-export const getRandomArbitrary = (min, max) => Math.round(Math.random() * (max - min) + min);
+export const getRandomArbitrary = () => Math.round(Math.random() * (50 - 1) + 1);
 
 
-// ------- brain-even start------/
+// ------- game-play------/
 
-export const brainEvenGame = () => {
+export const gameplay = (conditions = '', getTrueAnswer, getRandomValue) => {
+    console.log('Welcome to the Brain Games!');
+    console.log(`${conditions}\n`);
     const name = userName();
     console.log('Hello, ' + name + '!\n');
         for (let i = 1; i <= 3; i++) {
-            const num = getRandomArbitrary(1, 100);        
-            const isEven = num % 2 === 0;
-            const answer =  getAnswer(num); 
-            const trueAnswer = (isEven) => isEven ? 'yes' : 'no';           
+            const randomValue = getRandomValue();            
+            const answer =  getAnswer(randomValue); 
+            const trueAnswer = getTrueAnswer(randomValue);           
             
-            if (answer === trueAnswer(isEven)) {
-                console.log(`Your answer: ${answer}`)                
+            if (answer === trueAnswer) {
+                console.log(`Your answer: ${answer}\nCorrect!`)                
             } else {
-                return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueAnswer(isEven)}'.\nLet's try again, ${name}`)
+                return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueAnswer}'.\nLet's try again, ${name}`)
             }            
         }    
-        console.log(`Correct!\nCongratulations, ${name}!`);          
+        console.log(`Congratulations, ${name}!`);          
     };
 
-// ---- brain-even end ---- /
+// ---- game-play end ---- /
     
                 
