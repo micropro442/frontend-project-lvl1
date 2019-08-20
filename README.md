@@ -5,5 +5,8 @@
 
 # Setup
 
+Brain-even
 [![asciicast](https://asciinema.org/a/lu4qYBx9whkr4Z1OMFnfpP8lr.svg)](https://asciinema.org/a/lu4qYBx9whkr4Z1OMFnfpP8lr)
 
+Brain-calc
+[![asciicast](https://asciinema.org/a/ZnJ0YlwezASpqQ0MprKU1oyg6.svg)](https://asciinema.org/a/ZnJ0YlwezASpqQ0MprKU1oyg6)
