@@ -8,6 +8,8 @@ export const getAnswer = (num) => readlineSync.question('Question ' + num, { hid
 
 export const getRandomArbitrary = () => Math.round(Math.random() * (50 - 1) + 1);
 
+export const getRandomDeltaProgress = (max, min) => Math.round(Math.random() * (max - min) + min);
+
 
 // ------- game-play------/
 
