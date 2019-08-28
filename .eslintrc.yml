@@ -1,17 +1,13 @@
 plugins:
-	-babel
+  - babel
 
-
-env: 
-	node: true
-
-
+env:
+  node: true
+ 
 parser: babel-eslint
 
-
 extends:
-	- 'airbnb-base'
-
-
+  - 'airbnb-base'
+ 
 rules:
-	no-console: 0
+  no-console: 0

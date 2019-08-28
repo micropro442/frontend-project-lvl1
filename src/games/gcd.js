@@ -1,22 +1,23 @@
-import { getRandomArbitrary, gameplay } from '..'
+import { getRandomArbitrary, gameplay } from '..';
 
-const conditions = 'Find the greatest common divisor of given numbers.'
+const conditions = 'Find the greatest common divisor of given numbers.';
 const genTwoNumber = () => `${getRandomArbitrary()} ${getRandomArbitrary()}`;
 
 const getGcd = (a, b) => {
-    let max = Math.max(a, b);
-    let min = Math.min(a, b);
-    if (max % min === 0) {
-        return min;
-    } else {
-        max %= min;
-        return getGcd(max, min);
-    }
+  let max = Math.max(a, b);
+  const min = Math.min(a, b);
+  if (max % min === 0) {
+    return min;
+  }
+  max %= min;
+  return getGcd(max, min);
 };
 
 const trueAnswer = (value) => {
-    const convToArr = value.split(' ');
-    return getGcd(convToArr[0], convToArr[1]).toString(); 
+  const convToArr = value.split(' ');
+  return getGcd(convToArr[0], convToArr[1]).toString();
 };
 
-export const gcd = () => gameplay(conditions, trueAnswer, genTwoNumber);
+const gcd = () => gameplay(conditions, trueAnswer, genTwoNumber);
+
+export default gcd;

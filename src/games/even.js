@@ -1,10 +1,18 @@
-import { getRandomArbitrary, gameplay } from '..'
+import { getRandomArbitrary, gameplay } from '..';
 
-const conditions = 'Answer "yes" if number even otherwise answer "no".\n'
+const conditions = 'Answer "yes" if number even otherwise answer "no".\n';
 
 const randomNum = () => getRandomArbitrary();
 
 const isEven = (num) => num % 2 === 0;
-const trueAnswer = (num) => isEven(num) ? 'yes' : 'no'; 
+const trueAnswer = (num) => {
+  if (isEven(num)) {
+    return 'yes';
+  }
+  return 'no';
+};
 
-export const even = () => gameplay(conditions, trueAnswer, randomNum);
+
+const even = () => gameplay(conditions, trueAnswer, randomNum);
+
+export default even;
