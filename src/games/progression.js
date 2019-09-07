@@ -1,7 +1,8 @@
-import { cons } from '@hexlet/pairs';
-import { getRandom, play, getRandomDiffProgress } from '..';
+import {
+  getRandom, play, getRandomDiffProgress, genQuestionAndAnswer,
+} from '..';
 
-const getRandomProgression = () => {
+const getRandomProgress = () => {
   const diff = getRandomDiffProgress(1, 9);
   const getProgression = () => {
     let beginNumProgression = getRandom();
@@ -39,11 +40,6 @@ const getTrueAnswer = (value) => {
 
 const condition = 'What number is missing in the progression?';
 
-const genQuestionAndAnswer = () => {
-  const progression = getRandomProgression();
-  return cons(`${progression}`, getTrueAnswer(progression).toString());
-};
-
-const progression = () => play(condition, genQuestionAndAnswer);
+const progression = () => play(condition, genQuestionAndAnswer(getRandomProgress, getTrueAnswer));
 
 export default progression;

@@ -1,14 +1,7 @@
-import { cons } from '@hexlet/pairs';
-import { getRandom, play } from '..';
+import { getRandom, play, genQuestionAndAnswer } from '..';
 
 const condition = 'Answer "yes" if number even otherwise answer "no".\n';
 const getTrueAnswer = (num) => (num % 2 === 0 ? 'yes' : 'no');
 
-const genQuestionAndAnswer = () => {
-  const randomNum = getRandom();
-  return cons(`${randomNum}`, getTrueAnswer(randomNum));
-};
-
-const even = () => play(condition, genQuestionAndAnswer);
-
+const even = () => play(condition, genQuestionAndAnswer(getRandom, getTrueAnswer));
 export default even;

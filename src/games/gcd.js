@@ -1,5 +1,4 @@
-import { cons } from '@hexlet/pairs';
-import { getRandom, play } from '..';
+import { getRandom, play, genQuestionAndAnswer } from '..';
 
 const condition = 'Find the greatest common divisor of given numbers.';
 const genTwoNumber = () => `${getRandom()} ${getRandom()}`;
@@ -11,15 +10,10 @@ const getGreatestCommonDivisor = (a, b) => {
   return getGreatestCommonDivisor(b, a % b);
 };
 
-
 const getTrueAnswer = (value) => {
   const convToArr = value.split(' ');
   return getGreatestCommonDivisor(convToArr[0], convToArr[1]);
 };
-const genQuestionAndAnswer = () => {
-  const twoNumber = genTwoNumber();
-  return cons(`${twoNumber}`, getTrueAnswer(twoNumber).toString());
-};
-const gcd = () => play(condition, genQuestionAndAnswer);
 
+const gcd = () => play(condition, genQuestionAndAnswer(genTwoNumber, getTrueAnswer));
 export default gcd;

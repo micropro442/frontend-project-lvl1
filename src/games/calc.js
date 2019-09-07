@@ -1,5 +1,4 @@
-import { cons } from '@hexlet/pairs';
-import { getRandom, play } from '..';
+import { getRandom, play, genQuestionAndAnswer } from '..';
 
 const condition = 'What is the result of the expression?';
 
@@ -25,11 +24,7 @@ const getTrueAnswer = (value) => {
   }
 };
 
-const genQuestionAndAnswer = () => {
-  const randomExpression = getRandomExpression();
-  return cons(`${randomExpression}`, getTrueAnswer(randomExpression).toString());
-};
 
-const calc = () => play(condition, genQuestionAndAnswer);
+const calc = () => play(condition, genQuestionAndAnswer(getRandomExpression, getTrueAnswer));
 
 export default calc;
