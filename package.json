@@ -1,8 +1,7 @@
 {
   "name": "frontend-project-lvl1",
   "version": "1.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "project 1 - game collection",
   "scripts": {
     "test": "npx eslint .",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
@@ -23,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/micropro442/frontend-project-lvl1.git"
   },
-  "author": "",
+  "author": "Dmitriy Yunashev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/micropro442/frontend-project-lvl1/issues"
@@ -41,6 +40,7 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "dependencies": {
+    "@hexlet/pairs": "^1.0.10",
     "readline-sync": "^1.4.10"
   }
 }

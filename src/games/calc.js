@@ -1,22 +1,35 @@
-import { getRandomArbitrary, gameplay } from '..';
+import { cons } from '@hexlet/pairs';
+import { getRandom, play } from '..';
 
-
-const conditionsGame = 'What is the result of the expression?';
+const condition = 'What is the result of the expression?';
 
 const getRandomOperator = () => {
-  const num = getRandomArbitrary();
-  if (num % 2 === 0) {
-    return '+';
-  }
-  if (num % 3 === 0) {
-    return '-';
-  }
-  return '*';
+  const operator = '+-*';
+  const randomIndex = Math.round(Math.random() * ((operator.length - 1) - 0) + 0);
+  return operator[randomIndex];
 };
-const getRandomExpression = () => `${getRandomArbitrary()} ${getRandomOperator()} ${getRandomArbitrary()}`;
+const getRandomExpression = () => `${getRandom()} ${getRandomOperator()} ${getRandom()}`;
 
-const trueAnswer = (value) => eval(value).toString();
+const getTrueAnswer = (value) => {
+  const arr = value.split(' ');
+  const leftValue = Number(arr[0]);
+  const rightValue = Number(arr[arr.length - 1]);
+  const operator = arr[1];
+  switch (operator) {
+    case '+':
+      return leftValue + rightValue;
+    case '-':
+      return leftValue - rightValue;
+    default:
+      return leftValue * rightValue;
+  }
+};
 
-const calc = () => gameplay(conditionsGame, trueAnswer, getRandomExpression);
+const genQuestionAndAnswer = () => {
+  const randomExpression = getRandomExpression();
+  return cons(`${randomExpression}`, getTrueAnswer(randomExpression).toString());
+};
+
+const calc = () => play(condition, genQuestionAndAnswer);
 
 export default calc;

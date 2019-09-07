@@ -1,23 +1,25 @@
-import { getRandomArbitrary, gameplay } from '..';
+import { cons } from '@hexlet/pairs';
+import { getRandom, play } from '..';
 
-const conditions = 'Find the greatest common divisor of given numbers.';
-const genTwoNumber = () => `${getRandomArbitrary()} ${getRandomArbitrary()}`;
+const condition = 'Find the greatest common divisor of given numbers.';
+const genTwoNumber = () => `${getRandom()} ${getRandom()}`;
 
-const getGcd = (a, b) => {
-  let max = Math.max(a, b);
-  const min = Math.min(a, b);
-  if (max % min === 0) {
-    return min;
+const getGreatestCommonDivisor = (a, b) => {
+  if (b === 0) {
+    return a;
   }
-  max %= min;
-  return getGcd(max, min);
+  return getGreatestCommonDivisor(b, a % b);
 };
 
-const trueAnswer = (value) => {
+
+const getTrueAnswer = (value) => {
   const convToArr = value.split(' ');
-  return getGcd(convToArr[0], convToArr[1]).toString();
+  return getGreatestCommonDivisor(convToArr[0], convToArr[1]);
 };
-
-const gcd = () => gameplay(conditions, trueAnswer, genTwoNumber);
+const genQuestionAndAnswer = () => {
+  const twoNumber = genTwoNumber();
+  return cons(`${twoNumber}`, getTrueAnswer(twoNumber).toString());
+};
+const gcd = () => play(condition, genQuestionAndAnswer);
 
 export default gcd;

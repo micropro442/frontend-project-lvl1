@@ -1,8 +1,8 @@
-import { getRandomArbitrary, gameplay } from '..';
+import { cons } from '@hexlet/pairs';
+import { getRandom, play } from '..';
 
-const conditions = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const randomNum = () => getRandomArbitrary();
-const trueAnswer = (num) => {
+const condition = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const getTrueAnswer = (num) => {
   for (let i = 2; i < num; i += 1) {
     if (num > 0 && num % i === 0) {
       return 'no';
@@ -11,6 +11,11 @@ const trueAnswer = (num) => {
   return 'yes';
 };
 
-const prime = () => gameplay(conditions, trueAnswer, randomNum);
+const genQuestionAndAnswer = () => {
+  const randomNum = getRandom();
+  return cons(`${randomNum}`, getTrueAnswer(randomNum).toString());
+};
+
+const prime = () => play(condition, genQuestionAndAnswer);
 
 export default prime;

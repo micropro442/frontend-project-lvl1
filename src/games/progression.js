@@ -1,19 +1,21 @@
-import { getRandomArbitrary, gameplay, getRandomDeltaProgress } from '..';
+import { cons } from '@hexlet/pairs';
+import { getRandom, play, getRandomDiffProgress } from '..';
 
 const getRandomProgression = () => {
-  const deltaProgression = getRandomDeltaProgress(1, 9);
+  const diff = getRandomDiffProgress(1, 9);
   const getProgression = () => {
-    let beginNumProgression = getRandomArbitrary();
+    let beginNumProgression = getRandom();
     const arr = [];
-    for (let i = 1; i <= 10; i += 1) {
+    const lengthProgress = 10;
+    for (let i = 1; i <= lengthProgress; i += 1) {
       arr.push(beginNumProgression);
-      beginNumProgression += deltaProgression;
+      beginNumProgression += diff;
     }
     return arr;
   };
   const hideArrElement = () => {
     const arr = getProgression();
-    const index = deltaProgression;
+    const index = getRandomDiffProgress(1, 8);
     arr.splice(index, 1, '..');
     return arr;
   };
@@ -28,22 +30,20 @@ const getRandomProgression = () => {
   return convToStr();
 };
 
-
-const trueAnswer = (value) => {
+const getTrueAnswer = (value) => {
   const arr = value.split(' ');
-  let delta = 0;
-  if (arr[arr.length - 1] !== '..') {
-    delta = (arr[arr.length - 1] - arr[0]) / 9;
-  } else {
-    delta = (arr[arr.length - 2] - arr[0]) / 8;
-  }
-  const indexEl = arr.indexOf('..');
-  const x = Number(arr[0]) + (indexEl * delta);
-  return x.toString();
+  const i = arr.indexOf('..');
+  const diff = Number((arr[arr.length - 1] - arr[0]) / (arr.length - 1));
+  return Number(arr[0]) + (diff * i);
 };
 
-const conditions = 'What number is missing in the progression?';
+const condition = 'What number is missing in the progression?';
 
-const progression = () => gameplay(conditions, trueAnswer, getRandomProgression);
+const genQuestionAndAnswer = () => {
+  const progression = getRandomProgression();
+  return cons(`${progression}`, getTrueAnswer(progression).toString());
+};
+
+const progression = () => play(condition, genQuestionAndAnswer);
 
 export default progression;
