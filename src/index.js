@@ -3,9 +3,7 @@ import { car, cdr, cons } from '@hexlet/pairs';
 
 export const getAnswer = (num) => readlineSync.question(`Question ${num}`, { hideEchoBack: true, mask: '' });
 
-export const getRandom = () => Math.round(Math.random() * (50 - 1) + 1);
-
-export const getRandomDiffProgress = (max, min) => Math.round(Math.random() * (max - min) + min);
+export const getRandom = (min = 1, max = 50) => Math.round(Math.random() * (max - min) + min);
 
 export const genQuestionAndAnswer = (genRandom, genTrueAnswer) => () => {
   const random = genRandom();

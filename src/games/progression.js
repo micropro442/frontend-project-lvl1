@@ -1,34 +1,25 @@
 import {
-  getRandom, play, getRandomDiffProgress, genQuestionAndAnswer,
+  getRandom, play, genQuestionAndAnswer,
 } from '..';
 
 const getRandomProgress = () => {
-  const diff = getRandomDiffProgress(1, 9);
-  const getProgression = () => {
-    let beginNumProgression = getRandom();
-    const arr = [];
-    const lengthProgress = 10;
-    for (let i = 1; i <= lengthProgress; i += 1) {
-      arr.push(beginNumProgression);
-      beginNumProgression += diff;
+  const diff = getRandom(1, 9);
+  const indexHiddenEl = getRandom(1, 8);
+  const startProgression = getRandom();
+  const lengthProgression = 10;
+  let memberProgression = startProgression;
+
+  let progression = `${startProgression}`;
+
+  for (let i = 0; i <= lengthProgression; i += 1) {
+    memberProgression += diff;
+    if (i === indexHiddenEl) {
+      progression += ' ..';
+    } else {
+      progression += ` ${memberProgression}`;
     }
-    return arr;
-  };
-  const hideArrElement = () => {
-    const arr = getProgression();
-    const index = getRandomDiffProgress(1, 8);
-    arr.splice(index, 1, '..');
-    return arr;
-  };
-  const convToStr = () => {
-    const arr = hideArrElement();
-    let str = arr[0];
-    for (let i = 1; i < arr.length; i += 1) {
-      str += ` ${arr[i]}`;
-    }
-    return str;
-  };
-  return convToStr();
+  }
+  return progression;
 };
 
 const getTrueAnswer = (value) => {

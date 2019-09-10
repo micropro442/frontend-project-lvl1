@@ -11,8 +11,8 @@ const getGreatestCommonDivisor = (a, b) => {
 };
 
 const getTrueAnswer = (value) => {
-  const convToArr = value.split(' ');
-  return getGreatestCommonDivisor(convToArr[0], convToArr[1]);
+  const numbers = value.split(' ');
+  return getGreatestCommonDivisor(numbers[0], numbers[1]);
 };
 
 const gcd = () => play(condition, genQuestionAndAnswer(genTwoNumber, getTrueAnswer));

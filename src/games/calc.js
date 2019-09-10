@@ -2,12 +2,10 @@ import { getRandom, play, genQuestionAndAnswer } from '..';
 
 const condition = 'What is the result of the expression?';
 
-const getRandomOperator = () => {
+const getRandomExpression = () => {
   const operator = '+-*';
-  const randomIndex = Math.round(Math.random() * ((operator.length - 1) - 0) + 0);
-  return operator[randomIndex];
+  return `${getRandom()} ${operator[getRandom(0, operator.length - 1)]} ${getRandom()}`;
 };
-const getRandomExpression = () => `${getRandom()} ${getRandomOperator()} ${getRandom()}`;
 
 const getTrueAnswer = (value) => {
   const arr = value.split(' ');
