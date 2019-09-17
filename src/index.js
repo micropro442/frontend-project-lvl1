@@ -21,7 +21,8 @@ export const play = (conditions = '', questionAndAnswer) => {
       console.log(`Your answer: ${answer}\nCorrect!`);
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${trueAnswer}'`);
-      return console.log(`Let's try again, ${name}`);
+      console.log(`Let's try again, ${name}`);
+      return undefined;
     }
   }
   console.log(`Congratulations, ${name}!`);
