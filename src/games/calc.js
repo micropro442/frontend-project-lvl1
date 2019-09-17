@@ -3,9 +3,9 @@ import { getRandom, play } from '..';
 
 const condition = 'What is the result of the expression?';
 
-const getGameCalc = () => {
-  const getRandomExpression = (value) => `${getRandom()} ${value[getRandom(0, value.length - 1)]} ${getRandom()}`;
+const getRandomExpression = (value) => `${getRandom()} ${value[getRandom(0, value.length - 1)]} ${getRandom()}`;
 
+const getGameCalc = () => {
   const getTrueAnswer = (value) => {
     const arr = value.split(' ');
     const leftValue = Number(arr[0]);
