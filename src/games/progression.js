@@ -1,37 +1,34 @@
 import { cons } from '@hexlet/pairs';
-import { getRandom, play } from '..';
+import { getRandom } from '../utils';
+import playGame from '..';
 
 const condition = 'What number is missing in the progression?';
+const roundsCount = 3;
 
-const getRandomProgress = () => {
-  const diff = getRandom(1, 9);
-  const indexHiddenEl = getRandom(1, 8);
+const getRandomProgress = (progressionLength) => {
   const startProgression = getRandom();
-  const lengthProgression = 10;
-  let memberProgression = startProgression;
-  let progression = `${startProgression}`;
-  for (let i = 0; i <= lengthProgression; i += 1) {
-    memberProgression += diff;
-    if (i === indexHiddenEl) {
-      progression += ' ..';
-    } else {
-      progression += ` ${memberProgression}`;
-    }
+  const diff = getRandom(1, progressionLength - 1);
+  const progression = [startProgression];
+  for (let i = 0; i < progressionLength - 1; i += 1) {
+    progression.push(progression[i] + diff);
   }
   return progression;
 };
 
-const getGameProgression = () => {
-  const getTrueAnswer = (value) => {
-    const arr = value.split(' ');
-    const i = arr.indexOf('..');
-    const diff = Number((arr[arr.length - 1] - arr[0]) / (arr.length - 1));
-    return Number(arr[0]) + (diff * i);
-  };
-  const question = getRandomProgress();
-  const answer = getTrueAnswer(question).toString();
+const getQuestionAndAnswer = () => {
+  const progressionLength = 10;
+  const indexHiddenEl = getRandom(1, progressionLength - 1);
+  const randomProgress = getRandomProgress(progressionLength);
+  let question = '';
+  const answer = randomProgress[indexHiddenEl].toString();
+  for (let i = 0; i < progressionLength; i += 1) {
+    if (i !== indexHiddenEl) {
+      question += `${randomProgress[i]} `;
+    } else {
+      question += '.. ';
+    }
+  }
   return cons(question, answer);
 };
 
-const playGameProgression = () => play(condition, getGameProgression);
-export default playGameProgression;
+export default () => playGame(condition, getQuestionAndAnswer, roundsCount);

@@ -1,19 +1,17 @@
 import { cons } from '@hexlet/pairs';
-import { getRandom, play } from '..';
+import { getRandom } from '../utils';
+import playGame from '..';
 
 const condition = 'Find the greatest common divisor of given numbers.';
-
+const roundsCount = 3;
 const getGreatestCommonDivisor = (a, b) => (b === 0 ? a : getGreatestCommonDivisor(b, a % b));
 
-const getGameGcd = () => {
-  const getTrueAnswer = (value) => {
-    const numbers = value.split(' ');
-    return getGreatestCommonDivisor(numbers[0], numbers[1]);
-  };
-  const question = `${getRandom()} ${getRandom()}`;
-  const answer = getTrueAnswer(question);
+const getQuestionAndAnswer = () => {
+  const leftValue = getRandom();
+  const rightValue = getRandom();
+  const question = `${leftValue} ${rightValue}`;
+  const answer = getGreatestCommonDivisor(leftValue, rightValue).toString();
   return cons(question, answer);
 };
 
-const playGameGcd = () => play(condition, getGameGcd);
-export default playGameGcd;
+export default () => playGame(condition, getQuestionAndAnswer, roundsCount);
