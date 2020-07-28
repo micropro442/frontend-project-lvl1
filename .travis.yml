@@ -4,4 +4,4 @@ node_js:
 
 scripts: 
   - make lint
-  - make test-conversage
+  
