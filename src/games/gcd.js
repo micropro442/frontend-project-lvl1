@@ -1,5 +1,5 @@
 import { cons } from '@hexlet/pairs';
-import { getRandom } from '../utils';
+import getRandom from '../utils';
 import playGame from '..';
 
 const condition = 'Find the greatest common divisor of given numbers.';
